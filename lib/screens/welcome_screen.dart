@@ -7,186 +7,189 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-
-      // Cuerpo principal de la pantalla
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            // Título de la página
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                'Alimentación',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: Stack(
+        children: [
+          // Fondo con imagen tranquila
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/Fondo_Inicio.png'), // Asegúrate de tener esta imagen
+                fit: BoxFit.cover,
               ),
             ),
-
-            const SizedBox(height: 10),
-
-
-               // Carrusel de texto motivacional
-            SizedBox(
-              height: 80,
-              child: PageView(
-                children: const [
-                  Center(
-                    child: Text(
-                      '"La tranquilidad comienza con una buena alimentación."',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      '"Cuida tu cuerpo, es el único lugar donde tienes que vivir."',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                  Center(
-                    child: Text(
-                      '"Cada pequeño paso hacia una mejor alimentación es un gran paso hacia tu bienestar."',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            // Carrusel de tarjetas
-            SizedBox(
-              height: 260,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                children: [
-                  _buildCard(
-                    context,
-                    imagePath: 'assets/manzana.png',
-                    title: 'Información Frutas',
-                    description:
-                        'Conoce cómo ciertos alimentos influyen en tu salud y bienestar.',
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
-                      );
-                    },
-                  ),
-                  const SizedBox(width: 16),
-                  _buildCard(
-                    context,
-                    imagePath: 'assets/banano.png',
-                    title: 'Seguimiento de proceso',
-                    description:
-                        'Monitorea tu progreso y establece metas saludables.',
-                    onTap: () {
-                      // Aquí más adelante podemos poner la ruta de seguimiento
-                    },
-                  ),
-                  const SizedBox(width: 16),
-                  _buildCard(
-                    context,
-                    imagePath: 'assets/banano.png',
-                    title: 'Foro',
-                    description:
-                        'Comparte experiencias y consejos con la comunidad.',
-                    onTap: () {
-                      // Aquí más adelante podemos poner la ruta del foro
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-
-      // Barra de navegación inferior
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Módulo',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Inicio',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Usuario',
+
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+
+                // Título
+                const Text(
+                  'Alimentación',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black45,
+                        blurRadius: 4,
+                        offset: Offset(1, 1),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 10),
+
+                // Carrusel de texto motivacional
+                SizedBox(
+                  height: 80,
+                  child: PageView(
+                    children: const [
+                      Center(
+                        child: Text(
+                          '"La tranquilidad comienza con una buena alimentación."',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45,
+                                blurRadius: 4,
+                                offset: Offset(1, 1),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          '"Cuida tu cuerpo, es el único lugar donde tienes que vivir."',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45,
+                                blurRadius: 4,
+                                offset: Offset(1, 1),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          '"Cada pequeño paso hacia una mejor alimentación es un gran paso hacia tu bienestar."',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                color: Colors.black45,
+                                blurRadius: 4,
+                                offset: Offset(1, 1),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // Carrusel de tarjetas centrado
+                Expanded(
+                  child: Center(
+                    child: SizedBox(
+                      height: 320,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                       children: [ 
+                          buildCard(context, 'Frutas', 'assets/Ciruela.png'),
+                          const SizedBox(width: 20),
+                          buildCard(context, 'Seguimiento', 'assets/images/seguimiento.png'),
+                          const SizedBox(width: 20),
+                          buildCard(context, 'Foro', 'assets/images/foro.png'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
-        currentIndex: 1, // Index de inicio seleccionado
-        onTap: (index) {
-          // Aquí puedes manejar la navegación según el índice seleccionado
-        },
       ),
     );
   }
 
-  // Método privado para construir las tarjetas
-  Widget _buildCard(BuildContext context,
-      {required String imagePath,
-      required String title,
-      required String description,
-      required VoidCallback onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 200,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 2,
-              blurRadius: 6,
-              offset: const Offset(0, 3),
+  // Método para construir las tarjetas
+  Widget buildCard(BuildContext context, String title, String imagePath) {
+    return Container(
+      width: 200,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.9),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+         
+          const SizedBox(height: 20),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-              child: Image.asset(
-                imagePath,
-                height: 120,
-                width: double.infinity,
-                fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Explora más sobre $title',
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.black54,
+            ),
+          ),
+          const SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 153, 62, 175),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
             ),
-            const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                title,
-                style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(
-                description,
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 8),
-          ],
-        ),
+            child: const Text('Ver más'),
+          ),
+        ],
       ),
     );
   }
